@@ -1,0 +1,1 @@
+web: gunicorn face_recognition_attendance.wsgi --log-file -

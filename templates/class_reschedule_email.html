@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class Reschedule Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        td:first-child {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+        .students-list {
+            text-align: left;
+            padding: 0;
+            list-style-type: none;
+        }
+        .students-list li {
+            background: #f9f9f9;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Class Reschedule Notification</h2>
+        <p>Your class schedule has been updated. Below are the new details:</p>
+
+        <table>
+            <tr>
+                <td>Class Name:</td>
+                <td>{{ class_schedule.class_name }}</td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td>{{ class_schedule.date }}</td>
+            </tr>
+            <tr>
+                <td>Start Time:</td>
+                <td>{{ class_schedule.start_time }}</td>
+            </tr>
+            <tr>
+                <td>End Time:</td>
+                <td>{{ class_schedule.end_time }}</td>
+            </tr>
+            <tr>
+                <td>Lab Number:</td>
+                <td>{{ class_schedule.lab.lab_number }}</td>
+            </tr>
+        </table>
+
+        <h3>Assigned Students:</h3>
+        <ul class="students-list">
+            {% for student in class_schedule.students.all %}
+            <li>{{ student.full_name }} ({{ student.s_email }})</li>
+            {% endfor %}
+        </ul>
+
+        <p class="footer">Thank you,<br>University Administration</p>
+    </div>
+</body>
+</html>
